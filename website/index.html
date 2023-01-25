@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Mighty BALL! </title>
+
+   <!-- used to link the css document to the html document -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- from font awesome so that i can add logos to my website -->
+    <script src="https://kit.fontawesome.com/4b76c8371a.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    
+    <!-- "&nbsp;" is used to add spaced bettwen text -->
+    <nav class="navbar">
+        <div class="navbar__container">
+            <!-- font awesome for bomb -->
+            <a href="/" id="navbar__logo"><i class="fa-sharp fa-solid fa-bomb">&nbsp;</i> Magic 8 Ball</a>
+            
+            <!-- this makes the navbar usable on mobile devices -->
+            <div class="navbar__toggle" id="moblie-menu">
+                <span class="bar"></span> <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+<!-- all the elements that are in the navbar -->
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="/" class="navbar__links"> <i class="fa-sharp fa-solid fa-house">&nbsp;</i> Home </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="/tech.html" class="navbar__links"> Lore </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="https://www.amazon.de/-/en/Tobar-21021-Magic-Ball-Number/dp/B00N1UEQ5G/ref=sr_1_2?crid=2ABQF0JGFEPFS&keywords=magic+8+ball&qid=1673292019&sprefix=magic+8+ball%2Caps%2C92&sr=8-2" class="navbar__links"> Products </a>
+                </li>
+
+<!-- want to use a button here therefore it is "btn" and not item -->
+                <li class="navbar__btn">
+                    <a href="/" class="button"> sign up </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+<!-- 8 ball imputs code-->
+
+    <div class="page-body">
+
+        <!-- 8 ball button code-->
+            <div class="ball-button">
+                
+                <img id='magic-ball' src="images/8 ball picture.png" alt="Mighty Ball of Knowledge" width="300px" height="300px" class="ball-image" onclick="showmessage() ">
+                    
+            </div>
+
+        <!-- the bar where you write the message that will be shown on screen -->    
+
+             <div class="input-place">
+                 <input type="text" id="clear" placeholder="Ask me anything!">
+             </div>
+
+        </div>
+        
+
+    </div>
+
+    <!-- used to implament java script into my document -->
+    <script src="app.js"></script>
+</body>
+
+<!-- the scrpit tells html to use java script -->
+<script>
+
+// this makes the magic 8 ball a button and when it is clicked it executes the following functions
+// it needs the const so that it knows what it is looking for 
+    const magicBall = document.getElementById("magic-ball");
+    magicBall.addEventListener("click", getResult);
+    magicBall.addEventListener("click", showMessage);
+
+    const inputPlace = document.getElementsByClassName("input-place")[0];
+
+
+// this gives a number between 1-8 and depending on the number it will give me a different outcome this uses java script
+
+    function getResult() {
+        const randomNumber = Math.floor(Math.random() * 8) + 1;
+    
+// depending on the random number generated it shows one of the following images 
+// the way it changes the image is by changing the source of the image depdning on the random number that is picked
+        if(randomNumber === 1) {
+            magicBall.src = "images/yes.png"
+        }
+        else if(randomNumber === 2) {
+                magicBall.src = "images/no.png"
+            }
+            else if(randomNumber === 3) {
+                    magicBall.src = "images/askLater.png"
+                }
+        if(randomNumber === 4) {
+            magicBall.src = "images/cannotNow.png"
+        }
+        if(randomNumber === 5) {
+            magicBall.src = "images/mostLike.png"
+        }
+        if(randomNumber === 6) {
+            magicBall.src = "images/noDoubt.png"
+        }
+        if(randomNumber === 7) {
+            magicBall.src = "images/outlookGood.png"
+        }
+        if(randomNumber === 8) {
+            magicBall.src = "images/saysNo.png"
+        }
+        
+    }
+
+// displays the message the user has writen 
+    function showMessage() {
+        const input = document.getElementById("clear");
+        alert("Your question is: "+ input.value);
+    }
+
+</script>
+
+
+</html>
